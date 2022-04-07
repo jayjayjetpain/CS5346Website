@@ -142,7 +142,7 @@ function WhiteNavbar() {
                   </DropdownItem>*/}
                 </DropdownMenu> 
               </UncontrolledDropdown>
-              <UncontrolledDropdown nav inNavbar>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle className="mr-2" color="default" caret nav>
                   Possible Apartment Pages
                 </DropdownToggle>
@@ -154,7 +154,7 @@ function WhiteNavbar() {
                     Possible Apartment Page Example 2
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle className="mr-2" color="default" caret nav>
                   Sections

@@ -61,25 +61,22 @@ function AboutUs() {
             <h2 className="text-center creators" id="Contact">Creators</h2>
             <Row>
               <Col md="6">
-                <Card className="card-profile card-plain">
+              <Card className="card-profile card-plain">
                   <CardBody>
                     <div className="card-avatar">
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
                         <img
                           alt="..."
                           src={
-                            require("assets/img/faces/ayo-ogunseinde-2.jpg")
-                              .default
+                            require("images/jayson.jpg")
                           }
                         />
                         <CardTitle tag="h4">Jayson Werth</CardTitle>
                       </a>
                     </div>
                     <p className="card-description text-center">
-                      A group becomes a team when each member is sure enough of
-                      himself and his contribution to praise the skill of the
-                      others. No one can whistle a symphony. It takes orchestra
-                      to play it.
+                      Computer Science B.S. w/ Security Concentration, Cybersecurity M.S. <br />
+                      Skills: Full Stack Development, C++, HTML, CSS, JavaScript, React, SQL, MongoDB, Git, Python
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">
@@ -89,15 +86,14 @@ function AboutUs() {
                       href="#pablo"
                       onClick={(e) => e.preventDefault()}
                     >
-                      <i className="fa fa-envelope" />
+                      <i className="fas fa-envelope" />
                     </Button>
                     <Button
                       className="btn-just-icon mr-1"
                       color="dribbble"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="https://github.com/jayjayjetpain"
                     >
-                      <i className="fa fa-github" />
+                      <i className="fa-brands fa-github" />
                     </Button>
                   </CardFooter>
                 </Card>
@@ -110,8 +106,7 @@ function AboutUs() {
                         <img
                           alt="..."
                           src={
-                            require("assets/img/faces/joe-gardner-2.jpg")
-                              .default
+                            require("images/isaac.jpg")
                           }
                         />
                         <CardTitle tag="h4">Isaac Rose</CardTitle>
@@ -136,93 +131,14 @@ function AboutUs() {
                     <Button
                       className="btn-just-icon mr-1"
                       color="dribbble"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      href="https://github.com/itrose225"
                     >
-                      <i className="fa fa-github" />
+                      <i className="fa-brands fa-github" />
                     </Button>
                   </CardFooter>
                 </Card>
               </Col>
             </Row>
-            {/* <h3 className="more-info">Need more information?</h3>
-            <Row className="coloured-cards">
-              <Col md="4" sm="6">
-                <div className="card-big-shadow">
-                  <Card
-                    className="card-just-text"
-                    data-background="color"
-                    data-color="blue"
-                    data-radius="none"
-                  >
-                    <CardBody>
-                      <h6 className="card-category">Best cards</h6>
-                      <CardTitle tag="h4">
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          Blue Card
-                        </a>
-                      </CardTitle>
-                      <p className="card-description">
-                        What all of these have in common is that they're pulling
-                        information out of the app or the service and making it
-                        relevant to the moment.
-                      </p>
-                    </CardBody>
-                  </Card>
-                  
-                </div>
-              </Col>
-              <Col md="4" sm="6">
-                <div className="card-big-shadow">
-                  <Card
-                    className="card-just-text"
-                    data-background="color"
-                    data-color="green"
-                    data-radius="none"
-                  >
-                    <CardBody>
-                      <h6 className="card-category">Best cards</h6>
-                      <CardTitle tag="h4">
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          Green Card
-                        </a>
-                      </CardTitle>
-                      <p className="card-description">
-                        What all of these have in common is that they're pulling
-                        information out of the app or the service and making it
-                        relevant to the moment.
-                      </p>
-                    </CardBody>
-                  </Card>
-                  
-                </div>
-              </Col>
-              <Col md="4" sm="6">
-                <div className="card-big-shadow">
-                  <Card
-                    className="card-just-text"
-                    data-background="color"
-                    data-color="yellow"
-                    data-radius="none"
-                  >
-                    <CardBody>
-                      <h6 className="card-category">Best cards</h6>
-                      <CardTitle tag="h4">
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          Yellow Card
-                        </a>
-                      </CardTitle>
-                      <p className="card-description">
-                        What all of these have in common is that they're pulling
-                        information out of the app or the service and making it
-                        relevant to the moment.
-                      </p>
-                    </CardBody>
-                  </Card>
-                  
-                </div>
-              </Col>
-            </Row> */}
           </Container>
         </div>
       </div>

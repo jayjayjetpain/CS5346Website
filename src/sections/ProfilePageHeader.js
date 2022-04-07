@@ -19,7 +19,7 @@ function ProfilePageHeader() {
         style={{
           backgroundImage:
             "url(" +
-            require("assets/img/sections/rodrigo-ardilha.jpg") +
+            require("images/standard.jpg") +
             ")",
         }}
       >

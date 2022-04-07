@@ -27,7 +27,7 @@ import "assets/demo/react-demo.css";
 // pages
 import LandingPage from "pages/LandingPage.js";
 import AboutUsPage from "pages/AboutUsPage.js";
-import ProductPage from "pages/ProductPage.js";
+// import ProductPage from "pages/ProductPage.js";
 import ProfilePage from "pages/ProfilePage.js";
 import SearchPage from "pages/SearchPage.js";
 
@@ -81,12 +81,12 @@ ReactDOM.render(
         render={(props) => <LandingPage {...props} />}
       /> */}
       {/* <Route path="/login-page" render={(props) => <LoginPage {...props} />} /> */}
-      <Route
+      {/* <Route
         path="/product-page"
         render={(props) => <ProductPage {...props} />}
-      />
+      /> */}
       <Route
-        path="/profile-page"
+        path="/apartment"
         render={(props) => <ProfilePage {...props} />}
       />
       {/* <Route

@@ -50,19 +50,19 @@ function ProfilePage() {
                   className="fileinput fileinput-new"
                   data-provides="fileinput"
                 >
-                  <div className="fileinput-new img-no-padding">
+                  {/* <div className="fileinput-new img-no-padding">
                     <img
                       alt="..."
                       src={
                         require("assets/img/faces/joe-gardner-2.jpg")
                       }
                     />
-                  </div>
+                  </div> */}
                   <div className="name">
-                    <h4 className="title text-center">
-                      Chet Faker <br />
-                      <small>Music Producer</small>
-                    </h4>
+                    <h3 className="text-center">
+                      <b>The Standard Apartments</b> <br />
+                      <a href="https://www.thestandardliving.com/"><small>https://www.thestandardliving.com/</small></a>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -70,15 +70,43 @@ function ProfilePage() {
             <Row>
               <Col className="ml-auto mr-auto text-center" md="6">
                 <p>
-                  An artist of considerable range, Chet Faker — the name taken
-                  by Melbourne-raised, Brooklyn-based Nick Murphy — writes,
-                  performs and records all of his own music, giving it a warm,
-                  intimate feel with a solid groove structure.
+                  "At The Standard, you'll find all the necessities you need for easy living. Combining luxury apartments with premier amenities and a convenient northeast Dallas, TX neighborhood, you won't want to live anywhere else. These pet-friendly apartments feature stunning interiors with comfort and convenience in every room."
                 </p>
-                <br />
-                <Button className="btn-round" color="default" outline>
-                  <i className="fa fa-cog mr-1" />
-                  Settings
+                <div class="d-flex my-4 border-dark border">
+                  <div class="d-flex flex-row w-100">
+                    <div class="w-100">
+                      <ul class="d-flex justify-content-between w-100 p-3 m-0 list-unstyled">
+                        <li class="flex-grow-1 flex-shrink-1 flex-fill">
+                            <div class="m-auto text-center border-right">
+                                <p class="font-weight-bold"><u>Monthly Rent</u></p>
+                                <p class="font-weight-normal">$1,580 - $2,964</p>
+                            </div>
+                        </li>
+                        <li class="flex-grow-1 flex-shrink-1 flex-fill">
+                            <div class="m-auto text-center border-right">
+                                <p class="font-weight-bold"><u>Bedrooms</u></p>
+                                <p class="font-weight-normal">0 - 2 bd</p>
+                            </div>
+                        </li>
+                        <li class="flex-grow-1 flex-shrink-1 flex-fill">
+                            <div class="m-auto text-center border-right">
+                                <p class="font-weight-bold"><u>Bathrooms</u></p>
+                                <p class="font-weight-normal">1 - 2 ba</p>
+                            </div>
+                        </li>
+                        <li class="flex-grow-1 flex-shrink-1 flex-fill">
+                            <div class="m-auto text-center">
+                                <p class="font-weight-bold"><u>Square Feet</u></p>
+                                <p class="font-weight-normal">508 - 1,626 sq ft</p>
+                            </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <Button className="btn-round" color="default" outline href="https://www.thestandardliving.com/floor-plans.aspx">
+                  <i className="fas fa-building-user mr-1" />
+                  View Available Units
                 </Button>
               </Col>
             </Row>
@@ -93,7 +121,7 @@ function ProfilePage() {
                         toggle("1");
                       }}
                     >
-                      Follows
+                      Cost History
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -103,7 +131,7 @@ function ProfilePage() {
                         toggle("2");
                       }}
                     >
-                      Following
+                      Cost Prediction
                     </NavLink>
                   </NavItem>
                 </Nav>
@@ -113,7 +141,8 @@ function ProfilePage() {
             <TabContent className="following" activeTab={activeTab}>
               <TabPane tabId="1" id="follows">
                 <Row>
-                  <Col className="ml-auto mr-auto" md="6">
+                      Put Chart Here
+                  {/* <Col className="ml-auto mr-auto" md="6">
                     <ul className="list-unstyled follows">
                       <li>
                         <Row>
@@ -177,7 +206,7 @@ function ProfilePage() {
                         </Row>
                       </li>
                     </ul>
-                  </Col>
+                  </Col> */}
                 </Row>
               </TabPane>
               <TabPane className="text-center" tabId="2" id="following">
