@@ -83,11 +83,21 @@ function AboutUs() {
                     <Button
                       className="btn-just-icon mr-1"
                       color="linkedin"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      id="tooltip65260554"
+                      type="button"
                     >
                       <i className="fas fa-envelope" />
                     </Button>
+                    <UncontrolledPopover
+                      trigger="focus"
+                      placement="bottom"
+                      target="tooltip65260554"
+                    >
+                      <PopoverHeader>SMU Email</PopoverHeader>
+                      <PopoverBody>
+                        jwerth@smu.edu
+                      </PopoverBody>
+                    </UncontrolledPopover>
                     <Button
                       className="btn-just-icon mr-1"
                       color="dribbble"
@@ -123,11 +133,21 @@ function AboutUs() {
                     <Button
                       className="btn-just-icon mr-1"
                       color="linkedin"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      id="tooltip65260557"
+                      type="button"
                     >
-                      <i className="fa fa-envelope" />
+                      <i className="fas fa-envelope" />
                     </Button>
+                    <UncontrolledPopover
+                      trigger="focus"
+                      placement="bottom"
+                      target="tooltip65260557"
+                    >
+                      <PopoverHeader>SMU Email</PopoverHeader>
+                      <PopoverBody>
+                        irose@smu.edu
+                      </PopoverBody>
+                    </UncontrolledPopover>
                     <Button
                       className="btn-just-icon mr-1"
                       color="dribbble"
