@@ -22,8 +22,8 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 // styles
 import "bootstrap/scss/bootstrap.scss";
 import "assets/scss/paper-kit.scss";
-import "assets/demo/demo.css";
-import "assets/demo/react-demo.css";
+// import "assets/demo/demo.css";
+// import "assets/demo/react-demo.css";
 // pages
 import LandingPage from "pages/LandingPage.js";
 import AboutUsPage from "pages/AboutUsPage.js";
