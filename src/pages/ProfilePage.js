@@ -3,9 +3,6 @@ import React from "react";
 // reactstrap components
 import {
   Button,
-  Label,
-  FormGroup,
-  Input,
   NavItem,
   NavLink,
   Nav,
@@ -33,13 +30,19 @@ function ProfilePage() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("profile-page");
+    console.log(window.location.pathname.split("/")[2])
     return function cleanup() {
       document.body.classList.remove("profile-page");
     };
   });
+
+  let apartments = JSON.parse(localStorage.getItem("apartments"))
+  let index = window.location.pathname.split("/")[2]
+
   return (
     <>
       <InfoNavbar />
+      {index < apartments.length && <>
       <ProfilePageHeader />
       <div className="wrapper">
         <div className="profile-content section">
@@ -50,18 +53,10 @@ function ProfilePage() {
                   className="fileinput fileinput-new"
                   data-provides="fileinput"
                 >
-                  {/* <div className="fileinput-new img-no-padding">
-                    <img
-                      alt="..."
-                      src={
-                        require("assets/img/faces/joe-gardner-2.jpg")
-                      }
-                    />
-                  </div> */}
                   <div className="name">
                     <h3 className="text-center">
-                      <b>The Standard Apartments</b> <br />
-                      <a href="https://www.thestandardliving.com/"><small>https://www.thestandardliving.com/</small></a>
+                      <b>{apartments[index]["name"]}</b> <br />
+                      <a href={apartments[index]["url"]}><small>{apartments[index]["url"]}</small></a>
                     </h3>
                   </div>
                 </div>
@@ -70,7 +65,7 @@ function ProfilePage() {
             <Row>
               <Col className="ml-auto mr-auto text-center" md="6">
                 <p>
-                  "At The Standard, you'll find all the necessities you need for easy living. Combining luxury apartments with premier amenities and a convenient northeast Dallas, TX neighborhood, you won't want to live anywhere else. These pet-friendly apartments feature stunning interiors with comfort and convenience in every room."
+                  "{apartments[index]["desc"]}"
                 </p>
                 <div class="d-flex my-4 border-dark border">
                   <div class="d-flex flex-row w-100">
@@ -79,32 +74,32 @@ function ProfilePage() {
                         <li class="flex-grow-1 flex-shrink-1 flex-fill">
                             <div class="m-auto text-center border-right">
                                 <p class="font-weight-bold"><u>Monthly Rent</u></p>
-                                <p class="font-weight-normal">$1,580 - $2,964</p>
+                                <p class="font-weight-normal">${apartments[index]["price"][0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} - ${apartments[index]["price"][1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             </div>
                         </li>
                         <li class="flex-grow-1 flex-shrink-1 flex-fill">
                             <div class="m-auto text-center border-right">
                                 <p class="font-weight-bold"><u>Bedrooms</u></p>
-                                <p class="font-weight-normal">0 - 2 bd</p>
+                                <p class="font-weight-normal">{apartments[index]["units"][0]} - {apartments[index]["units"][apartments[index]["units"].length - 1]} bd</p>
                             </div>
                         </li>
                         <li class="flex-grow-1 flex-shrink-1 flex-fill">
                             <div class="m-auto text-center border-right">
                                 <p class="font-weight-bold"><u>Bathrooms</u></p>
-                                <p class="font-weight-normal">1 - 2 ba</p>
+                                <p class="font-weight-normal">{apartments[index]["units"][0] === 0 ? apartments[index]["units"][1] : apartments[index]["units"][0]} - {apartments[index]["units"][apartments[index]["units"].length - 1]} ba</p>
                             </div>
                         </li>
                         <li class="flex-grow-1 flex-shrink-1 flex-fill">
                             <div class="m-auto text-center">
                                 <p class="font-weight-bold"><u>Square Feet</u></p>
-                                <p class="font-weight-normal">508 - 1,626 sq ft</p>
+                                <p class="font-weight-normal">{apartments[index]["sqft"][0]} - {apartments[index]["sqft"][1]} sq ft</p>
                             </div>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <Button className="btn-round" color="default" outline href="https://www.thestandardliving.com/floor-plans.aspx">
+                <Button className="btn-round" color="default" outline href={apartments[index]["listings"]}>
                   <i className="fas fa-building-user mr-1" />
                   View Available Units
                 </Button>
@@ -218,7 +213,8 @@ function ProfilePage() {
             </TabContent>
           </Container>
         </div>
-      </div>
+      </div></>
+      }
       <FooterGray />
     </>
   );

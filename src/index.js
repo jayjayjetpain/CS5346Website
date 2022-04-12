@@ -44,7 +44,7 @@ import SearchPage from "pages/SearchPage.js";
 // import Error422 from "views/examples/Error422.js";
 // import Error500 from "views/examples/Error500.js";
 // import LandingPage from "views/examples/LandingPage.js";
-// import LoginPage from "views/examples/LoginPage.js";
+import LoginPage from "pages/LoginPage.js";
 // import RegisterPage from "views/examples/RegisterPage.js";
 // import Settings from "views/examples/Settings.js";
 // import TwitterRedesign from "views/examples/TwitterRedesign.js";
@@ -80,13 +80,13 @@ ReactDOM.render(
         path="/landing-page"
         render={(props) => <LandingPage {...props} />}
       /> */}
-      {/* <Route path="/login-page" render={(props) => <LoginPage {...props} />} /> */}
+      <Route path="/login" render={(props) => <LoginPage {...props} />} />
       {/* <Route
         path="/product-page"
         render={(props) => <ProductPage {...props} />}
       /> */}
       <Route
-        path="/apartment"
+        path="/apartment/:id"
         render={(props) => <ProfilePage {...props} />}
       />
       {/* <Route

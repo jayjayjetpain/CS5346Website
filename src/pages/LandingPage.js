@@ -28,6 +28,7 @@ function LandingPage() {
       document.body.classList.remove("landing-page");
     };
   });
+
   return (
     <>
       <MultiDropdownNavbar />
@@ -143,7 +144,7 @@ function LandingPage() {
             <br />
             <Row>
             <Col className="ml-auto mr-auto" md="8">
-                <h3>Want to Start Searching? Click this button below to start searching with custom filters or use the <Button className="btn-link m-0" color="info" to="/index#search" tag={Link}>search bar</Button> above to get started by ZIP code!</h3>
+                <h3>Want to Start Searching? Click this button below to start searching with custom filters or use the <Button className="btn-link m-0 p-0" color="dark" to="/index#search" tag={Link}><u>search bar</u></Button> above to get started by ZIP code!</h3>
                 <br />
                 <Button className="btn-fill btn-round" color="success" to="/search" tag={Link}>Search Now</Button>
               </Col>

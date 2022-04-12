@@ -10,6 +10,9 @@ import {
   Container,
   Row,
   Col,
+  UncontrolledPopover,
+  PopoverHeader,
+  PopoverBody,
 } from "reactstrap";
 
 // core components
