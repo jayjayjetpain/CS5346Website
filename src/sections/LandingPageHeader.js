@@ -22,6 +22,12 @@ function LandingPageHeader() {
       };
     }
   });
+  
+  const [zip, setZip] = React.useState(null)
+
+  function validateInput() {
+    return !(zip !== null && zip.length > 4)
+  }
 
   return (
     <>
@@ -45,13 +51,8 @@ function LandingPageHeader() {
               </h3>
               <br />
               <InputGroup>
-                <Input
-                  id="zip"
-                  name="zip"
-                  placeholder="ZIP Code"
-                  type="number"
-                />
-                <Button to="/search" tag={Link} color="info">
+              <Input id="zip" value={zip} placeholder="Enter ZIP Code Here (Must be at least 5 digits)" type="number" onChange={(e) => setZip(`${e.target.value}`)} />
+                <Button to={"/search?" + zip} tag={Link} color="info" disabled={validateInput()}>
                   Search
                 </Button>
               </InputGroup>

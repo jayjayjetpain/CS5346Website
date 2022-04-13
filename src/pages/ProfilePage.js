@@ -181,6 +181,7 @@ function ProfilePage() {
                     <div className="form-check-radio px-2 mr-1">
                       <Label check>
                         <Input
+                          defaultChecked
                           value={12}
                           id="month"
                           name="month"
