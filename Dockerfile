@@ -7,8 +7,9 @@ WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY frontend/package.json ./frontend/package.json
-COPY frontend/package-lock.json ./frontend/package-lock.json
+COPY frontend/ ./frontend/
+# COPY frontend/package.json ./frontend/package.json
+# COPY frontend/package-lock.json ./frontend/package-lock.json
 
 RUN cd frontend
 RUN npm install --silent
@@ -16,7 +17,6 @@ RUN npm rebuild node-sass --force
 RUN npm run build
 
 # add app
-COPY frontend/ ./frontend/
 
 # EXPOSE 3000
 
