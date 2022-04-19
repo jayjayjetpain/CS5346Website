@@ -4,13 +4,14 @@
     "description": "class project for smu cs 5346 - cloud computing",
     "main": "server.js",
     "scripts": {
-        "start": "node server.bundle.js",
+        "start": "nodemon server.js",
         "build": "webpack",
         "dev": "nodemon ./server.js localhost 3080"
     },
     "dependencies": {
         "express": "^4.17.1",
-        "http-proxy-middleware": "^1.0.4"
+        "http-proxy-middleware": "^1.0.4",
+        "mongodb": "^4.5.0"
     },
     "devDependencies": {
         "del": "^5.1.0",
