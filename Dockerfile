@@ -7,19 +7,19 @@ WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY frontend/ ./frontend/
-# COPY frontend/package.json ./frontend/package.json
-# COPY frontend/package-lock.json ./frontend/package-lock.json
+COPY frontend/package.json ./frontend/package.json
+COPY frontend/package-lock.json ./frontend/package-lock.json
 
-RUN cd frontend && npm install --silent && npm rebuild node-sass --force && npm run start
+RUN cd frontend && npm install --silent && npm rebuild node-sass --force && npm run build
 
 # add app
+COPY frontend/ ./frontend/
 
 # EXPOSE 3000
 
 FROM node:16 as backend-server
 WORKDIR /root/
-# COPY --from=react-app /usr/src/app/frontend/build ./frontend/build
+COPY --from=react-app /usr/src/app/frontend/build ./frontend/build
 COPY backend/package.json ./backend/package.json
 COPY backend/package-lock.json ./backend/package-lock.json
 RUN cd backend && npm install
