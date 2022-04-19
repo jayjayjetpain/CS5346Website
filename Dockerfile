@@ -1,22 +1,11 @@
+#frontend
 FROM node:16 as react-app
-
-# set working directory
 WORKDIR /usr/src/app
-
-# add `/app/node_modules/.bin` to $PATH
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
-# install app dependencies
-COPY frontend/package.json ./frontend/package.json
-COPY frontend/package-lock.json ./frontend/package-lock.json
-
+COPY frontend/ ./frontend/
 RUN cd frontend && npm install --silent && npm rebuild node-sass --force && npm run build
 
-# add app
-COPY frontend/ ./frontend/
-
-# EXPOSE 3000
-
+#backend
 FROM node:16 as backend-server
 WORKDIR /root/
 COPY --from=react-app /usr/src/app/frontend/build ./frontend/build
@@ -29,4 +18,3 @@ EXPOSE 3080
 
 # start app
 CMD ["node", "./backend/server.js"]
-# CMD ["npm", "start"]
