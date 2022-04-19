@@ -11,10 +11,7 @@ COPY frontend/ ./frontend/
 # COPY frontend/package.json ./frontend/package.json
 # COPY frontend/package-lock.json ./frontend/package-lock.json
 
-RUN cd frontend
-RUN npm install --silent
-RUN npm rebuild node-sass --force
-RUN npm run build
+RUN cd frontend && npm install --silent && npm rebuild node-sass --force && npm run build
 
 # add app
 
