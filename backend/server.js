@@ -27,7 +27,8 @@ async function main(){
 
 
   app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+    console.log("GOT HER")
+    // res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
   });
   
   app.listen(port, () => {

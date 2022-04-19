@@ -11,7 +11,7 @@ COPY frontend/ ./frontend/
 # COPY frontend/package.json ./frontend/package.json
 # COPY frontend/package-lock.json ./frontend/package-lock.json
 
-RUN cd frontend && npm install --silent && npm rebuild node-sass --force && npm run build
+RUN cd frontend && npm install --silent && npm rebuild node-sass --force
 
 # add app
 
@@ -19,7 +19,7 @@ RUN cd frontend && npm install --silent && npm rebuild node-sass --force && npm 
 
 FROM node:16 as backend-server
 WORKDIR /root/
-COPY --from=react-app /usr/src/app/frontend/build ./frontend/build
+# COPY --from=react-app /usr/src/app/frontend/build ./frontend/build
 COPY backend/package.json ./backend/package.json
 COPY backend/package-lock.json ./backend/package-lock.json
 RUN cd backend && npm install
