@@ -1,27 +1,35 @@
-# pull official base image
-FROM node:16
+FROM node:16 as react-app
 
 # set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
+COPY frontend/package.json ./frontend/package.json
+COPY frontend/package-lock.json ./frontend/package-lock.json
 
-
+RUN cd frontend
 RUN npm install --silent
-# RUN mkdir -p /app/node_modules/node-sass/vendor/linux-x64-93
-# RUN curl -L https://github.com/sass/node-sass/releases/download/v7.0.1/linux-x64-93_binding.node -o /app/node_modules/node-sass/vendor/linux-x64-93/binding.node
 RUN npm rebuild node-sass --force
-# RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm run build
 
 # add app
-COPY . ./
+COPY frontend/ ./frontend/
 
-EXPOSE 3000
+# EXPOSE 3000
+
+FROM node:16 as backend-server
+WORKDIR /root/
+COPY --from=react-app /usr/src/app/frontend/build ./frontend/build
+COPY backend/package.json ./backend/package.json
+COPY backend/package-lock.json ./backend/package-lock.json
+RUN cd backend && npm install
+COPY backend/server.js ./backend/
+
+EXPOSE 3080
 
 # start app
-CMD ["npm", "start"]
+CMD ["node", "./backend/server.js"]
+# CMD ["npm", "start"]
