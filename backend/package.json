@@ -4,9 +4,9 @@
     "description": "class project for smu cs 5346 - cloud computing",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
+        "start": "nodemon server.js",
         "build": "webpack",
-        "dev": "nodemon ./server.js localhost 3080"
+        "dev": "nodemon -L ./server.js"
     },
     "dependencies": {
         "express": "^4.17.1",
