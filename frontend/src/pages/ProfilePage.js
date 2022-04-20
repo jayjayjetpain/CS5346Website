@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 
 import {XYPlot, XAxis, YAxis, HorizontalGridLines, VerticalGridLines, LineSeries} from 'react-vis';
+import axios from 'axios';
 
 // core components
 import InfoNavbar from "sections/InfoNavbar.js";
@@ -25,43 +26,58 @@ import FooterGray from "sections/FooterGray.js";
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = React.useState("1");
-
+  const [apartment, setApartment] = React.useState(null);
+  const [costHistory, setCostHistory] = React.useState([]);
+  const [displayHist, setDisplayHist] = React.useState([]);
+  const [costPredict, setCostPredict] = React.useState([]);
+  // let index = window.location.pathname.split("/")[2]
+  // let costHistory, displayHist, costPredict
+  
   const toggle = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
     }
   };
-
+  
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
+    getApartmentById(window.location.pathname.split("/")[2])
     document.body.classList.add("profile-page");
-    console.log(window.location.pathname.split("/")[2])
     return function cleanup() {
       document.body.classList.remove("profile-page");
     };
-  });
+  }, []);
 
   const history = useHistory();
-  const [histNum, setHistNum] = React.useState(12)
+  // const [histNum, setHistNum] = React.useState(12)
 
-  // let apartments = JSON.parse(localStorage.getItem("apartments"))
-  let index = window.location.pathname.split("/")[2]
-  let apartment, costHistory, displayHist, costPredict
-
-  if(index >= JSON.parse(localStorage.getItem("apartments")).length) {
-    history.push("")
+  function getApartmentById(id) {
+    axios.get(`http://localhost:8000/apartment/${id}`)
+      .then(response => {
+        // console.log(response.data)
+        if(response.data) {
+          // console.log(response.data)
+          window.sessionStorage.setItem("apt2", JSON.stringify(response.data))
+          setApartment(response.data)
+          setCostHistory([{x: 'Apr 2021', y: response.data["history"][0]}, {x: 'May 2021', y: response.data["history"][1]}, {x: 'June 2021', y: response.data["history"][2]}, {x: 'July 2021', y: response.data["history"][3]}, {x: 'Aug 2021', y: response.data["history"][4]}, {x: 'Sept 2021', y: response.data["history"][5]}, {x: 'Oct 2021', y: response.data["history"][6]}, {x: 'Nov 2021', y: response.data["history"][7]}, {x: 'Dec 2021', y: response.data["history"][8]}, {x: 'Jan 2022', y: response.data["history"][9]}, {x: 'Feb 2022', y: response.data["history"][10]}, {x: 'Mar 2022', y: response.data["history"][11]}]);
+          setDisplayHist([{x: 'Apr 2021', y: response.data["history"][0]}, {x: 'May 2021', y: response.data["history"][1]}, {x: 'June 2021', y: response.data["history"][2]}, {x: 'July 2021', y: response.data["history"][3]}, {x: 'Aug 2021', y: response.data["history"][4]}, {x: 'Sept 2021', y: response.data["history"][5]}, {x: 'Oct 2021', y: response.data["history"][6]}, {x: 'Nov 2021', y: response.data["history"][7]}, {x: 'Dec 2021', y: response.data["history"][8]}, {x: 'Jan 2022', y: response.data["history"][9]}, {x: 'Feb 2022', y: response.data["history"][10]}, {x: 'Mar 2022', y: response.data["history"][11]}])
+          setCostPredict([{x: 'May 2022', y: response.data["predict"][0]}, {x: 'June 2022', y: response.data["predict"][1]}, {x: 'July 2022', y: response.data["predict"][2]}, {x: 'Aug 2022', y: response.data["predict"][3]}, {x: 'Sept 2022', y: response.data["predict"][4]}, {x: 'Oct 2022', y: response.data["predict"][5]}]);
+        } else {
+          history.push("/index")
+        }
+      })
+      .catch(error => console.error(`Error: ${error}`))
   }
-  else {
-    apartment = JSON.parse(localStorage.getItem("apartments"))[index]
-    costHistory = [{x: 'Apr 2021', y: apartment["history"][0]}, {x: 'May 2021', y: apartment["history"][1]}, {x: 'June 2021', y: apartment["history"][2]}, {x: 'July 2021', y: apartment["history"][3]}, {x: 'Aug 2021', y: apartment["history"][4]}, {x: 'Sept 2021', y: apartment["history"][5]}, {x: 'Oct 2021', y: apartment["history"][6]}, {x: 'Nov 2021', y: apartment["history"][7]}, {x: 'Dec 2021', y: apartment["history"][8]}, {x: 'Jan 2022', y: apartment["history"][9]}, {x: 'Feb 2022', y: apartment["history"][10]}, {x: 'Mar 2022', y: apartment["history"][11]}]
-    displayHist = costHistory.slice(12-histNum, 12)
-    costPredict = [{x: 'May 2022', y: apartment["predict"][0]}, {x: 'June 2022', y: apartment["predict"][1]}, {x: 'July 2022', y: apartment["predict"][2]}, {x: 'Aug 2022', y: apartment["predict"][3]}, {x: 'Sept 2022', y: apartment["predict"][4]}, {x: 'Oct 2022', y: apartment["predict"][5]}]
+
+  function changeChartInterval(num) {
+    setDisplayHist(costHistory.slice(12-num, 12))
   }
 
   return (
     <>
       <InfoNavbar />
       <ProfilePageHeader />
+      {apartment &&
       <div className="wrapper">
         <div className="profile-content section">
           <Container>
@@ -186,7 +202,7 @@ function ProfilePage() {
                           id="month"
                           name="month"
                           type="radio"
-                          onClick={e => setHistNum(12)}
+                          onClick={e => changeChartInterval(12)}
                         />
                         12 Months <span className="form-check-sign" />
                       </Label>
@@ -198,7 +214,7 @@ function ProfilePage() {
                           id="months"
                           name="month"
                           type="radio"
-                          onClick={e => setHistNum(6)}
+                          onClick={e => changeChartInterval(6)}
                         />
                         6 Months <span className="form-check-sign" />
                       </Label>
@@ -210,7 +226,7 @@ function ProfilePage() {
                           id="months"
                           name="month"
                           type="radio"
-                          onClick={e => setHistNum(3)}
+                          onClick={e => changeChartInterval(3)}
                         />
                         3 Months <span className="form-check-sign" />
                       </Label>
@@ -247,7 +263,7 @@ function ProfilePage() {
             </TabContent>
           </Container>
         </div>
-      </div>
+      </div>}
       <FooterGray />
     </>
   );

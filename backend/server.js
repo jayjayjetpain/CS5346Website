@@ -1,13 +1,16 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors')
 // const mysql = require('mysql');
 const {MongoClient, ServerApiVersion} = require('mongodb');
 const app = express(),
       bodyParser = require("body-parser");
       port = 8000;
 
+let collection;
 async function main(){
   app.use(bodyParser.json());
+  app.use(cors());
   app.use(express.urlencoded({extended: false}))
   // app.use(express.static(path.join(__dirname, '../frontend/public')))
 
@@ -15,7 +18,7 @@ async function main(){
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
   try {
     client.connect(err => {
-      const collection = client.db("apartments").collection("apartments");
+      collection = client.db("apartments").collection("apartments");
       // perform actions on the collection object
       // collection.find({}).toArray((err, result) => {
       //   console.log(result);
@@ -29,31 +32,29 @@ async function main(){
   } finally {
     client.close()
   }
-  
-  
-  // try {
-  //     // Connect to the MongoDB cluster
-  //     await client.connect();
-  //     const collection = client.db("apartments").collection("apartments")
-
-  //     // Make the appropriate DB calls
-  //     await  listDatabases(client, collection);
-
-  // } catch (e) {
-  //     console.error(e);
-  // } finally {
-  //     await client.close();
-  // }
-
 
   app.get('/search', (req,res) => {
     console.log("GOT HER")
+    // let aptList = []
+    // if(req.query.zip) {
+    //   console.log(req.query.zip)
+      collection.find({}).toArray((err, result) => {res.status(200).send(result)})
+      // collection.find({address: {$regex : req.query.zip}}).toArray((err, result) => {console.log(result);})
+    // }
+    // else {
+    //   console.log("not found")
+    // }
+    // console.log(aptList)
     // res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
   });
 
-  app.get('/apartment', (req,res) => {
+  app.get('/apartment/:id', (req,res) => {
     console.log("GOT HER2")
-    console.log(req.query)
+    // let apartment
+    console.log(req.params.id)
+    collection.findOne({id: parseInt(req.params.id)}, (err, result) => {res.status(200).json(result)})
+    // collection.find({id: parseInt(req.params.id)}).toArray((err, result) => {apartment = result;})
+    // console.log(apartment)
     // res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
   });
 

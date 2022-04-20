@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 // reactstrap components
 import {
@@ -16,6 +16,7 @@ import {
 import Select from "react-select";
 
 import { HashLink as Link } from 'react-router-hash-link';
+import axios from 'axios';
 
 // core components
 import DangerNavbar from "sections/InfoNavbar.js";
@@ -23,56 +24,79 @@ import FooterWhite from "sections/FooterGray.js";
 
 function SearchWithSidebar() {
   document.documentElement.classList.remove("nav-open");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [apartments, setApartments] = React.useState([])
+  const [filterResults, setFilterResults] = React.useState([])
+  const [displayPage, setDisplayPage] = React.useState(1)
+  const [displayResults, setDisplayResults] = React.useState([])
+  // let apartments = JSON.parse(localStorage.getItem("apartments"))
+  
   React.useEffect(() => {
+    setIsLoading(true);
+    getAllApartments();
+
     document.body.classList.add("search-page");
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
     return function cleanup() {
       document.body.classList.remove("search-page");
     };
-  });
+  }, []);
 
-  let apartments = JSON.parse(localStorage.getItem("apartments"))
-  const [filterResults, setFilterResults] = React.useState(handleQuery())
-  const [displayPage, setDisplayPage] = React.useState(1)
-  const [displayResults, setDisplayResults] = React.useState(setupResults())
  
   const [zip, setZip] = React.useState(window.location.href.includes("?") ? window.location.search.split("?")[1] : null);
   const [bedAmt, setBedAmt] = React.useState(null);
   const [priceRange, setPriceRange] = React.useState(null);
   const [priceTrend, setPriceTrend] = React.useState(null);
 
-  function handleQuery() {
+  function getAllApartments() {
+    axios.get(`http://localhost:8000/search`)
+    .then(response => {
+      window.sessionStorage.setItem("apt", JSON.stringify(response.data)); 
+      console.log("response")
+      console.log(response.data[0]["url"])
+      setApartments(response.data)
+      handleQuery(response.data);
+      setupResults(response.data);
+      setIsLoading(false);
+    })
+      .catch(error => console.error(`Error: ${error}`))
+  }
+
+  function handleQuery(apts) {
+    console.log(apts)
     let queryZip = window.location.search.split("?")[1]
     if(!window.location.href.includes("?") || !(/^\d+$/.test(queryZip)) || queryZip.length < 5) {
-      return apartments
+      setFilterResults(apts)
     }
     else {
-      return apartments.filter((apt) => {
+      let result = apts.filter((apt) => {
         return apt.address.includes(queryZip)
       })
+      setFilterResults(result)
     }
   }
   
-  function setupResults() {
+  function setupResults(apts) {
+    console.log(apts)
     let queryZip = window.location.search.split("?")[1]
     if(!window.location.href.includes("?") || !(/^\d+$/.test(queryZip)) || queryZip.length < 5) {
-      if(apartments.length > 4) {
-        return apartments.slice(0,5)
+      if(apts.length > 4) {
+        setDisplayResults(apts.slice(0,5))
       }
       else {
-        return apartments
+        setDisplayResults(apts)
       }
     }
     else {
-      let result = apartments.filter((apt) => {
+      let result = apts.filter((apt) => {
         return apt.address.includes(queryZip)
       })
       if(result.length > 4) {
-        return result.slice(0,5)
+        setDisplayResults(result.slice(0,5))
       }
       else {
-        return result
+        setDisplayResults(result)
       }
     }
   }
@@ -253,10 +277,10 @@ function SearchWithSidebar() {
                 </thead>
                 {displayResults.length > 0 &&
                 <tbody>
-                  {displayResults.map((apartment, index) =>
+                  {!isLoading && displayResults.map((apartment, index) =>
                       <tr>
                       <td className="td-product">
-                        <a className="link" href={ "/apartment/" + index } tag={Link}><strong>{apartment["name"]}</strong></a>
+                        <a className="link" href={ "/apartment/" + apartment["id"] } tag={Link}><strong>{apartment["name"]}</strong></a>
                         <p>
                           {apartment["units"][0] === 0 ? "Studio, 1 Bed 1 Bath, 2 Bed 2 Bath" : "1 Bed 1 Bath or 2 Bed 2 Bath"}
                         </p>
