@@ -30,8 +30,6 @@ services:
           - 3000:3000
         networks:
           - apartments-net
-        labels:
-          kompose.service.type: LoadBalancer
 
 # we are using a network to connect these
 # two containers. They will be part of the same virtual network

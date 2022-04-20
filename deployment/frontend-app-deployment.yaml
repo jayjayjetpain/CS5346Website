@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.service.type: LoadBalancer
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: frontend-app
+  name: frontend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: frontend-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.service.type: LoadBalancer
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/apartments-net: "true"
+        io.kompose.service: frontend-app
+    spec:
+      containers:
+        - args:
+            - bash
+            - -c
+            - npm install --silent && npm rebuild node-sass --force && npm start
+          image: frontend-app
+          name: frontend-app
+          ports:
+            - containerPort: 3000
+          resources: {}
+          tty: true
+          volumeMounts:
+            - mountPath: /app/node_modules
+              name: frontend-app-claim0
+            - mountPath: /app
+              name: frontend-app-claim1
+      restartPolicy: Always
+      volumes:
+        - name: frontend-app-claim0
+          persistentVolumeClaim:
+            claimName: frontend-app-claim0
+        - name: frontend-app-claim1
+          persistentVolumeClaim:
+            claimName: frontend-app-claim1
+status: {}
