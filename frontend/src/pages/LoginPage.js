@@ -81,7 +81,7 @@ function LoginPage(props) {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto" lg="4" md="6" sm="6">
-                <Card className="card-register" color="info">
+                <Card className="card-register" color="warning">
                   <CardTitle tag="h3"><strong>Login to Dev</strong></CardTitle>
                   <Form className="register-form">
                     <label><strong>Email</strong></label>

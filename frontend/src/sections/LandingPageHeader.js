@@ -34,12 +34,7 @@ function LandingPageHeader() {
       <div
         className="page-header"
         ref={pageHeader}
-        style={{
-          backgroundImage:
-            "url(" +
-            require("images/apt.jpg") +
-            ")",
-        }}
+        
       >
         <div className="filter" />
         <div className="content-center">
@@ -52,7 +47,7 @@ function LandingPageHeader() {
               <br />
               <InputGroup>
               <Input id="zip" value={zip} placeholder="Enter ZIP Code Here (Must be at least 5 digits)" type="number" onChange={(e) => setZip(`${e.target.value}`)} />
-                <Button to={"/search?" + zip} tag={Link} color="info" disabled={validateInput()}>
+                <Button to={"/search?" + zip} tag={Link} color="warning" disabled={validateInput()}>
                   Search
                 </Button>
               </InputGroup>

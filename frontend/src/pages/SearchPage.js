@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 // reactstrap components
 import {
@@ -29,7 +29,6 @@ function SearchWithSidebar() {
   const [filterResults, setFilterResults] = React.useState([])
   const [displayPage, setDisplayPage] = React.useState(1)
   const [displayResults, setDisplayResults] = React.useState([])
-  // let apartments = JSON.parse(localStorage.getItem("apartments"))
   
   React.useEffect(() => {
     setIsLoading(true);

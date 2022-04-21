@@ -30,8 +30,6 @@ function ProfilePage() {
   const [costHistory, setCostHistory] = React.useState([]);
   const [displayHist, setDisplayHist] = React.useState([]);
   const [costPredict, setCostPredict] = React.useState([]);
-  // let index = window.location.pathname.split("/")[2]
-  // let costHistory, displayHist, costPredict
   
   const toggle = (tab) => {
     if (activeTab !== tab) {
@@ -49,14 +47,11 @@ function ProfilePage() {
   }, []);
 
   const history = useHistory();
-  // const [histNum, setHistNum] = React.useState(12)
 
   function getApartmentById(id) {
     axios.get(`https://backend-api-pdococvs7a-uc.a.run.app/apartment/${id}`)
       .then(response => {
-        // console.log(response.data)
         if(response.data) {
-          // console.log(response.data)
           window.sessionStorage.setItem("apt2", JSON.stringify(response.data))
           setApartment(response.data)
           setCostHistory([{x: 'Apr 2021', y: response.data["history"][0]}, {x: 'May 2021', y: response.data["history"][1]}, {x: 'June 2021', y: response.data["history"][2]}, {x: 'July 2021', y: response.data["history"][3]}, {x: 'Aug 2021', y: response.data["history"][4]}, {x: 'Sept 2021', y: response.data["history"][5]}, {x: 'Oct 2021', y: response.data["history"][6]}, {x: 'Nov 2021', y: response.data["history"][7]}, {x: 'Dec 2021', y: response.data["history"][8]}, {x: 'Jan 2022', y: response.data["history"][9]}, {x: 'Feb 2022', y: response.data["history"][10]}, {x: 'Mar 2022', y: response.data["history"][11]}]);

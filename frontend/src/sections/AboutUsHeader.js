@@ -10,14 +10,9 @@ function AboutUsHeader() {
     <>
       <div
         className="page-header page-header-small"
-        style={{
-          backgroundImage:
-            "url(" +
-            require("assets/img/sections/gerrit-vermeulen.jpg").default +
-            ")",
-        }}
+        
       >
-        <div className="filter filter-info" />
+        <div className="filter filter-warning" />
         <div className="content-center">
           <Container>
             <h1>

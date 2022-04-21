@@ -39,28 +39,16 @@ function AboutUs() {
           <Container>
             <h3 className="title-uppercase">We build great products.</h3>
             <p>
-              Collaboratively kill administrate empowered markets via plug-and-play
-              networks. Dynamically procrastinate B2C users after installed base
-              benefits. Dramatically visualize customer directed convergence
-              without revolutionary ROI.
+              This project is for our CS 5346 - Cloud Computing Class at SMU. We were tasked with creating an application and deplying it to the cloud with specific requirements.
             </p>
             <p>
-              Efficiently unleash cross-media information without cross-media
-              value. Quickly maximize timely deliverables for real-time schemas.
-              Dramatically maintain clicks-and-mortar solutions without
-              functional solutions.
+            <u>Overarching Goal:</u> To successfully host your software in the cloud, leveraging multiple cloud offerings in
+the process, and present your experiences (demonstrate your software, discuss your choices, explain your
+rationale and considerations, etc.) to the class as if presenting to a potential employer. We all get to
+benefit from learning about one another’s project, and I want your project to be meaningful to you.
+
             </p>
-            <h3 className="title-uppercase">
-              We
-              <i className="fa fa-heart heart mr-3 ml-1" />
-              what we do.
-            </h3>
-            <p>
-              Completely synergize resource taxing relationships via premier
-              niche markets. Professionally cultivate one-to-one customer
-              service with robust ideas. Dynamically innovate resource-leveling
-              customer service for state of the art customer service.
-            </p>
+            
             <h2 className="text-center creators" id="Contact">Creators</h2>
             <Row>
               <Col md="6">
