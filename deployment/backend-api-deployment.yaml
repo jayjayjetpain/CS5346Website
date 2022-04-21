@@ -26,11 +26,7 @@ spec:
         io.kompose.service: backend-api
     spec:
       containers:
-        - args:
-            - bash
-            - -c
-            - npm install && npm run dev
-          image: backend-api
+        - image: us.gcr.io/cs-5346-apartmentwebsite/backend-api:1
           name: backend-api
           ports:
             - containerPort: 8000
@@ -38,14 +34,9 @@ spec:
           volumeMounts:
             - mountPath: /app/node_modules
               name: backend-api-claim0
-            - mountPath: /app
-              name: backend-api-claim1
       restartPolicy: Always
       volumes:
         - name: backend-api-claim0
           persistentVolumeClaim:
             claimName: backend-api-claim0
-        - name: backend-api-claim1
-          persistentVolumeClaim:
-            claimName: backend-api-claim1
 status: {}

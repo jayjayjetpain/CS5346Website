@@ -28,11 +28,7 @@ spec:
         io.kompose.service: frontend-app
     spec:
       containers:
-        - args:
-            - bash
-            - -c
-            - npm install --silent && npm rebuild node-sass --force && npm start
-          image: frontend-app
+        - image: us.gcr.io/cs-5346-apartmentwebsite/frontend-app:1
           name: frontend-app
           ports:
             - containerPort: 3000
@@ -41,14 +37,9 @@ spec:
           volumeMounts:
             - mountPath: /app/node_modules
               name: frontend-app-claim0
-            - mountPath: /app
-              name: frontend-app-claim1
       restartPolicy: Always
       volumes:
         - name: frontend-app-claim0
           persistentVolumeClaim:
             claimName: frontend-app-claim0
-        - name: frontend-app-claim1
-          persistentVolumeClaim:
-            claimName: frontend-app-claim1
 status: {}
