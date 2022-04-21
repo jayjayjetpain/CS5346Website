@@ -1,21 +1,15 @@
-#frontend
-FROM node:16 as react-app
+FROM node:17 AS ui-build
 WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY frontend/ ./frontend/
-RUN cd frontend && npm install --silent && npm rebuild node-sass --force
+RUN cd frontend && npm install && npm rebuild node-sass --force && npm run build
 
-#backend
-FROM node:16 as backend-server
+FROM node:17 AS server-build
 WORKDIR /root/
-COPY --from=react-app /usr/src/app/frontend ./frontend
+COPY --from=ui-build /usr/src/app/frontend/build ./frontend/build
 COPY backend/package*.json ./backend/
-#COPY backend/package.json ./backend/package.json
-#COPY backend/package-lock.json ./backend/package-lock.json
-RUN cd backend && npm install
 COPY backend/server.js ./backend/
 
-EXPOSE 3080
+EXPOSE 80
 
-# start app
-CMD ["node", "./backend/server.js"]
+RUN cd backend && npm install 
+CMD ["node", "./backend/index.js"]
