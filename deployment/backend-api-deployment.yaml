@@ -26,7 +26,7 @@ spec:
         io.kompose.service: backend-api
     spec:
       containers:
-        - image: us.gcr.io/cs-5346-apartmentwebsite/backend-api:1
+        - image: us.gcr.io/cs-5346-apartmentwebsite/backend-api:3
           name: backend-api
           ports:
             - containerPort: 8000

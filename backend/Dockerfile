@@ -5,6 +5,7 @@ WORKDIR /app
 #COPY package-lock.json ./
 #COPY server.js ./
 COPY / ./
+RUN npm install --global nodemon
 RUN npm install
 
 EXPOSE 8000

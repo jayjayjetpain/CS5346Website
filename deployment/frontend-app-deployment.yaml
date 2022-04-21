@@ -28,7 +28,7 @@ spec:
         io.kompose.service: frontend-app
     spec:
       containers:
-        - image: us.gcr.io/cs-5346-apartmentwebsite/frontend-app:1
+        - image: us.gcr.io/cs-5346-apartmentwebsite/frontend-app:3
           name: frontend-app
           ports:
             - containerPort: 3000
