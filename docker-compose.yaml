@@ -2,9 +2,10 @@ version: "3.3"
 
 services:
     backend-api:
-        build:
-          dockerfile: Dockerfile
-          context: ./backend
+        image: us.gcr.io/cs-5346-apartmentwebsite/backend-api:1
+        # build:
+        #   dockerfile: Dockerfile
+        #   context: ./backend
         command: bash -c "npm install && npm run dev"
         volumes:
           - /app/node_modules
@@ -16,9 +17,10 @@ services:
 
     frontend-app:
         tty: true
-        build:
-          dockerfile: Dockerfile
-          context: ./frontend
+        image: us.gcr.io/cs-5346-apartmentwebsite/frontend-app:1
+        # build:
+        #   dockerfile: Dockerfile
+        #   context: ./frontend
         command: bash -c "npm install --silent && npm rebuild node-sass --force && npm start"
         volumes:
           - /app/node_modules
