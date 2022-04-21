@@ -52,7 +52,7 @@ function ProfilePage() {
   // const [histNum, setHistNum] = React.useState(12)
 
   function getApartmentById(id) {
-    axios.get(`http://localhost:8000/apartment/${id}`)
+    axios.get(`https://34.102.219.103/apartment/${id}`)
       .then(response => {
         // console.log(response.data)
         if(response.data) {

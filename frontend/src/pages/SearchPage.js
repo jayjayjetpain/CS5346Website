@@ -50,7 +50,7 @@ function SearchWithSidebar() {
   const [priceTrend, setPriceTrend] = React.useState(null);
 
   function getAllApartments() {
-    axios.get(`http://localhost:8000/search`)
+    axios.get(`https://34.102.219.103/search`)
     .then(response => {
       window.sessionStorage.setItem("apt", JSON.stringify(response.data)); 
       console.log("response")
