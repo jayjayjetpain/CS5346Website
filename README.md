@@ -12,18 +12,12 @@ If you like bright and fresh colors, you will love this Premium Bootstrap 4 and 
 
 **Getting Started**
 
-1.  Install NodeJs from [NodeJs Official Page](https://nodejs.org/en/?ref=creativetim)
-2.  Go to [creative tim website](https://www.creative-tim.com/?ref=pkpr-docs-introduction) and login into your account
-3.  Go to the [downloads section of your account](https://www.creative-tim.com/downloads?ref=pkpr-docs-introduction) (be sure to be logged into your account)
-4.  Press the download button near **Paper Kit PRO React** product (this will download onto your computer a zip file)
-5.  Unzip the downloaded file to a folder in your computer
-6.  Open Terminal
-7.  Go to your file project (where you've unzipped the product)
-8.  Run in terminal `npm install`
-9.  Then run `npm start`
-10.  Or you can simply run `npm run install:clean` which will install `node_modules` and also will start your project.
-11.  Navigate to [https://localhost:3000](https://localhost:3000)
-12.  More information → [react](https://reactjs.org/docs/installation.html?ref=creativetim)
+1.  Clone the Repo
+2.  Go to your file project (where you've unzipped the product)
+3.  Run in terminal `npm install --force` (I had to do this to make it work)
+4.  Then run `npm start`
+5.  Navigate to [https://localhost:3000](https://localhost:3000)
+6.  The rest of this README is default from the React template
 
 **Fully Coded Components**
 

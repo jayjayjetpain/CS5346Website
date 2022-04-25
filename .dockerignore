@@ -1,0 +1,11 @@
+./frontend/node_modules
+./frontend/build
+./frontend/.dockerignore
+./frontend/Dockerfile
+./frontend/Dockerfile.prod
+
+./backend/node_modules
+./backend/build
+./backend/.dockerignore
+./backend/Dockerfile
+./backend/Dockerfile.prod
