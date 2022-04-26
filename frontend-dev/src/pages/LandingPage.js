@@ -110,7 +110,7 @@ function LandingPage() {
           </Container>
         </div>
         <Col className="ml-auto mr-auto" md="8">
-          <Card data-color="yellow">
+          <Card data-color="orange">
             <CardBody className="text-center">
               <h6 className="card-category">
                 <i className="fa fa-graduation-cap mr-1" />

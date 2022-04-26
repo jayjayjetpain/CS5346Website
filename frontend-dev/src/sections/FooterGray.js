@@ -10,7 +10,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 function FooterGray() {
   return (
     <>
-      <footer className="footer footer-gray footer-white">
+      <footer className="footer footer-black footer-white">
         <Container>
           <Row>
             <nav className="footer-nav">
@@ -20,7 +20,7 @@ function FooterGray() {
                     to="/index"
                     className="mr-1"
                   >
-                    Dallas Apartment Locator
+                    DAL - Dev Website
                   </Link>
                 </li>
                 <li>
@@ -41,7 +41,7 @@ function FooterGray() {
                 </li>
               </ul>
             </nav>
-            <div className="credits ml-auto text-dark">
+            <div className="credits ml-auto ">
               <span className="">
                 © {new Date().getFullYear()}
                 , made with <i className="fa fa-heart heart" /> by JW and IR

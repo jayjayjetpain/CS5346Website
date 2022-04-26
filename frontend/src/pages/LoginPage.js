@@ -13,6 +13,7 @@ import {
   Col,
   Alert,
 } from "reactstrap";
+import axios from 'axios';
 
 // core components
 import InfoNavbar from "sections/InfoNavbar.js";
@@ -41,12 +42,17 @@ function LoginPage(props) {
     e.preventDefault();
     setUserName("")
     setPassword("")
-    if(username === "admin123" && password === "QWE|}{P") {
-      window.open('https://frontend-dev-pdococvs7a-uc.a.run.app/index', "_self")
-    }
-    else {
-      setAlertSuccess(true)
-    }
+    await axios.post('https://backend-api-pdococvs7a-uc.a.run.app/login', {email: username, password: password})
+    .then(response => {
+      console.log(response)
+      if(response.data === true) {
+        window.sessionStorage.setItem("auth", "3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675")
+        window.open('https://frontend-dev-pdococvs7a-uc.a.run.app/index', "_self")
+      }
+      else {
+        setAlertSuccess(true)
+      }
+    })
   }
 
   return (
@@ -73,7 +79,7 @@ function LoginPage(props) {
               >
                 <i className="nc-icon nc-simple-remove" />
               </button>
-              <span>This is a notification with close button.</span>
+              <span>The Username Password Combination is Incorrect.</span>
             </Container>
           </Alert>
           <div className="filter" />
