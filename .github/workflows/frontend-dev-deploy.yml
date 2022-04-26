@@ -34,5 +34,5 @@ jobs:
         gcloud builds submit --tag us.gcr.io/cs-5346-apartmentwebsite/frontend-dev
         
     - name: 'Deploy to Cloud Run'
-      run: gcloud run deploy frontend-dev --image=us.gcr.io/cs-5346-apartmentwebsite/frontend-dev:latest --region=us-central1 --allow-unauthenticated --port=3001 --memory=1Gi
+      run: gcloud run deploy frontend-dev --image=us.gcr.io/cs-5346-apartmentwebsite/frontend-dev:latest --region=us-central1 --min-instances=1 --allow-unauthenticated --port=3001 --memory=1Gi
 
