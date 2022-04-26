@@ -39,7 +39,7 @@ function WhiteNavbar() {
     headroom.init();
   });
 
-  const [auth, setAuth] = React.useState(JSON.parse(window.sessionStorage.getItem("auth")))
+  // const [auth, setAuth] = React.useState(JSON.parse(window.sessionStorage.getItem("auth")))
 
   return (
     <>
@@ -79,7 +79,7 @@ function WhiteNavbar() {
           </div>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
-            {!auth ?
+            {/* {!auth ? */}
               <Button
                 className="btn-neutral ml-auto"
                 color="link"
@@ -88,7 +88,7 @@ function WhiteNavbar() {
               >
                 Login
               </Button>
-              : 
+              {/* : 
               <Button
                 className="btn-neutral ml-auto"
                 color="link"
@@ -96,7 +96,7 @@ function WhiteNavbar() {
               >
                 Logout
               </Button>
-            }
+            } */}
             <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle color="default" caret nav>
                   More Info

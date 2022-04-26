@@ -40,9 +40,10 @@ function WhiteNavbar() {
   });
 
   if(parseInt(JSON.stringify(window.sessionStorage.getItem("auth"))) !== 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675) {
-    // console.log(typeof window.sessionStorage.getItem("auth"))
-    // console.log(parseInt(window.sessionStorage.getItem("auth")) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675 )
-    window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
+    console.log(typeof window.sessionStorage.getItem("auth"))
+    console.log(JSON.stringify(window.sessionStorage.getItem("auth")))
+    console.log(parseInt(JSON.stringify(window.sessionStorage.getItem("auth"))) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675 )
+    // window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
   }
   // const [auth, setAuth] = React.useState(JSON.parse(window.sessionStorage.getItem("auth")))
 
