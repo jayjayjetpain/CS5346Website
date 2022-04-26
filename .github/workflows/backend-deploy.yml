@@ -34,4 +34,4 @@ jobs:
         gcloud builds submit --tag us.gcr.io/cs-5346-apartmentwebsite/backend-api
         
     - name: 'Deploy to Cloud Run'
-      run: gcloud run deploy backend-api --image=us.gcr.io/cs-5346-apartmentwebsite/backend-api:latest --region=us-central1 --allow-unauthenticated --port=8000
+      run: gcloud run deploy backend-api --image=us.gcr.io/cs-5346-apartmentwebsite/backend-api:latest --region=us-central1 --min-instances=1 --allow-unauthenticated --port=8000
