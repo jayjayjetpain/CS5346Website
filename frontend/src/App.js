@@ -10,7 +10,7 @@ import LandingPage from "pages/LandingPage.js";
 import AboutUsPage from "pages/AboutUsPage.js";
 import ProfilePage from "pages/ProfilePage.js";
 import SearchPage from "pages/SearchPage.js";
-// import LoginPage from "pages/LoginPage.js";
+import LoginPage from "pages/LoginPage.js";
 
 export default function App() {
 
@@ -18,7 +18,7 @@ export default function App() {
         <Switch>
             <Route path="/index" render={(props) => <LandingPage {...props} />} />
             <Route path="/about-us" render={(props) => <AboutUsPage {...props} />} />
-            {/* <Route path="/login" render={(props) => <LoginPage {...props} />} /> */}
+            <Route path="/login" render={(props) => <LoginPage {...props} />} />
             <Route
                 path="/apartment/:id"
                 render={(props) => <ProfilePage {...props} />}

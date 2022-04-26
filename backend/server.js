@@ -19,6 +19,7 @@ async function main(){
   try {
     client.connect(err => {
       collection = client.db("apartments").collection("apartments");
+      // collection.updateOne({id: 8}, {$set: {price: [1430, 2435]}});
       // perform actions on the collection object
       // collection.find({}).toArray((err, result) => {
       //   console.log(result);
@@ -49,6 +50,36 @@ async function main(){
   });
 
   app.get('/apartment/:id', (req,res) => {
+    console.log("GOT HER2")
+    // let apartment
+    console.log(req.params.id)
+    collection.findOne({id: parseInt(req.params.id)}, (err, result) => {res.status(200).json(result)})
+    // collection.find({id: parseInt(req.params.id)}).toArray((err, result) => {apartment = result;})
+    // console.log(apartment)
+    // res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
+  });
+
+  app.post('/apartment/:id', (req, res) => {
+      console.log(req.body)
+      collection.updateOne({id: parseInt(req.params.id)}, {$set: {name: req.body.name, address: req.body.address, units: req.body.units, price: req.body.price, sqft: req.body.sqft, url: req.body.url, listings: req.body.listings, desc: req.body.desc}})
+  })
+
+  app.get('/dev/search', (req,res) => {
+    console.log("GOT HER")
+    // let aptList = []
+    // if(req.query.zip) {
+    //   console.log(req.query.zip)
+      collection.find({}).toArray((err, result) => {res.status(200).send(result)})
+      // collection.find({address: {$regex : req.query.zip}}).toArray((err, result) => {console.log(result);})
+    // }
+    // else {
+    //   console.log("not found")
+    // }
+    // console.log(aptList)
+    // res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
+  });
+
+  app.get('/dev/apartment/:id', (req,res) => {
     console.log("GOT HER2")
     // let apartment
     console.log(req.params.id)

@@ -4,6 +4,12 @@
 ./frontend/Dockerfile
 ./frontend/Dockerfile.prod
 
+./frontend-dev/node_modules
+./frontend-dev/build
+./frontend-dev/.dockerignore
+./frontend-dev/Dockerfile
+./frontend-dev/Dockerfile.prod
+
 ./backend/node_modules
 ./backend/build
 ./backend/.dockerignore
