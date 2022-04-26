@@ -40,14 +40,14 @@ function LandingPageHeader() {
         <div className="content-center">
           <Container>
             <div className="motto">
-              <h1 className="title">Dallas Apartment Locator</h1>
+              <h1 className="title">DAL - Dev Website</h1>
               <h3 className="description">
-                Start searching for your dream apartment here.
+                Start searching for apartments to edit!
               </h3>
               <br />
               <InputGroup>
               <Input id="zip" value={zip} placeholder="Enter ZIP Code Here (Must be at least 5 digits)" type="number" onChange={(e) => setZip(`${e.target.value}`)} />
-                <Button to={"/search?" + zip} tag={Link} color="warning" disabled={validateInput()}>
+                <Button to={"/search?" + zip} tag={Link} color="danger" disabled={validateInput()}>
                   Search
                 </Button>
               </InputGroup>

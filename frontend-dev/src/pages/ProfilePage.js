@@ -257,6 +257,17 @@ function ProfilePage() {
                 </Row>
               </TabPane>
             </TabContent>
+            <br /><br />
+            <Button
+                    block
+                    className="btn-round"
+                    color="danger"
+                    outline
+                    type="reset"
+                    onClick={e => history.push(`/apartment/${window.location.pathname.split("/")[2]}`)}
+                  >
+                    View on Main Website
+                  </Button>
           </Container>
         </div>
       </div>}
