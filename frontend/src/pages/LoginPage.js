@@ -42,8 +42,7 @@ function LoginPage(props) {
     setUserName("")
     setPassword("")
     if(username === "admin123" && password === "QWE|}{P") {
-      window.sessionStorage.setItem("auth", JSON.stringify(true))
-      history.push("/");
+      window.open('https://frontend-dev-pdococvs7a-uc.a.run.app/index', "_self")
     }
     else {
       setAlertSuccess(true)
