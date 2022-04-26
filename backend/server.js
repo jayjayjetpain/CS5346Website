@@ -55,6 +55,7 @@ async function main(){
     apartments.findOne({id: parseInt(req.params.id)}, (err, result) => {res.status(200).json(result)})
   });
 
+  //login check
   app.post('/login', (req, res) => {
     users.findOne({email: req.body.email}, (err, result) => {
       if(result) {
