@@ -45,7 +45,7 @@ async function main(){
   })
 
   app.get('/dev', (req,res) => {
-    console.log("GOT HER")
+    console.log(auth)
     if(auth) {
       auth = false;
       res.end(JSON.stringify(true));
