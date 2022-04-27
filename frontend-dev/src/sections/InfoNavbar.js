@@ -18,6 +18,7 @@ import {
   Container,
   UncontrolledTooltip,
 } from "reactstrap";
+import axios from 'axios';
 // core components
 
 function WhiteNavbar() {
@@ -25,6 +26,20 @@ function WhiteNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
+    if(parseInt(JSON.stringify(window.sessionStorage.getItem("auth"))) !== 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675) {
+      axios.get('https://backend-api-pdococvs7a-uc.a.run.app/dev')
+      .then(response => {
+        if(response.data === true) {
+          window.sessionStorage.setItem("auth", "3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675")
+        }
+        else {
+          window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
+        }
+      })
+      // console.log(typeof window.sessionStorage.getItem("auth"))
+      // console.log(JSON.stringify(window.sessionStorage.getItem("auth")))
+      // console.log(parseInt(JSON.stringify(window.sessionStorage.getItem("auth"))) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675 )
+    }
     // initialise
     // localStorage.setItem("apartments", JSON.stringify([
     //   {"name": "The Standard Apartments", "units": [0,1,2], "address": "5920 E University Blvd, Dallas, TX 75206", "price": [1500, 2425], "sqft": [597, 1229], "history": [2000, 2100, 2300, 2300, 2400, 2700, 2600, 2300, 2000, 2100, 1900, 2100], "predict": [2100, 2100, 2000, 1900, 1900, 1800], "trend": true, "url": "https://www.thestandardliving.com/", "listings": "https://www.thestandardliving.com/floor-plans.aspx", "desc": "At The Standard, you'll find all the necessities you need for easy living. Combining luxury apartments with premier amenities and a convenient northeast Dallas, TX neighborhood, you won't want to live anywhere else. These pet-friendly apartments feature stunning interiors with comfort and convenience in every room."},
@@ -39,12 +54,7 @@ function WhiteNavbar() {
     headroom.init();
   });
 
-  if(parseInt(JSON.stringify(window.localStorage.getItem("auth"))) !== 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675) {
-    // console.log(typeof window.sessionStorage.getItem("auth"))
-    // console.log(JSON.stringify(window.sessionStorage.getItem("auth")))
-    // console.log(parseInt(JSON.stringify(window.sessionStorage.getItem("auth"))) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675 )
-    window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
-  }
+  
   // const [auth, setAuth] = React.useState(JSON.parse(window.sessionStorage.getItem("auth")))
 
   return (
@@ -98,7 +108,7 @@ function WhiteNavbar() {
               <Button
                 className="btn-neutral ml-auto"
                 color="link"
-                onClick={ e => { window.localStorage.removeItem("auth"); window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', "_self") } }
+                onClick={ e => { window.sessionStorage.removeItem("auth"); window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', "_self") } }
               >
                 Back to Main Site
               </Button>
