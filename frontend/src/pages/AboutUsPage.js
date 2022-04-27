@@ -114,10 +114,8 @@ benefit from learning about one another’s project, and I want your project to 
                       </a>
                     </div>
                     <p className="card-description text-center">
-                      The strength of the team is each individual member. The
-                      strength of each member is the team. If you can laugh
-                      together, you can work together, silence isn’t golden,
-                      it’s deadly.
+                      Computer Science B.S. w/ Software Engineering <br />
+                      Skills: Full Stack Development, C++, Angular, JavaScript, React, SQL, Java, Git, Python
                     </p>
                   </CardBody>
                   <CardFooter className="text-center">

@@ -40,7 +40,7 @@ function LandingPage() {
               <Col className="ml-auto mr-auto" md="8">
                 <h2 className="title" id="LearnMore">Let's talk product</h2>
                 <h5>
-                  This is a one stop shop for SMU students who are looking for apartments near campus. We provide competitive, viable, and financially realistic apartments for those looking for housing. In addition, we offer pricing predictions using our proprietary technology to give you a future outlook into how prices may change. So whether you are looking for an affordable apartment now or in 6 months, we have got you covered.
+                  This is a one stop shop for Dallas apartment shoppers. We provide competitive, viable, and financially realistic apartments for those looking for housing. In addition, we offer pricing predictions using our proprietary technology to give you a future outlook into how prices may change. So whether you are looking for an affordable apartment now or in 6 months, we have got you covered.
                 </h5>
               </Col>
             </Row>
@@ -54,7 +54,7 @@ function LandingPage() {
                   <div className="description">
                     <h4 className="warning-title">Diverse selections</h4>
                     <p className="description">
-                      We offer a variety of apartments near campus so you can find your perfect fit
+                      We offer a variety of apartments in Dallas so you can find your perfect fit
                     </p>
                   </div>
                 </div>
