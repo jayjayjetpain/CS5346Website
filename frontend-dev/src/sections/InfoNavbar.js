@@ -26,17 +26,17 @@ function WhiteNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
-    if(JSON.stringify(window.localStorage.getItem("auth")) !== "3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675") {
+    if(JSON.parse(window.sessionStorage.getItem("auth")) !== 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675) {
       axios.get('https://backend-api-pdococvs7a-uc.a.run.app/dev')
       .then(response => {
         if(response.data === true) {
-          window.localStorage.setItem("auth", "3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675")
-          console.log(typeof window.localStorage.getItem("auth"))
-          console.log(JSON.stringify(window.localStorage.getItem("auth")))
-          console.log(JSON.stringify(window.localStorage.getItem("auth")) === "3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675" )
+          window.sessionStorage.setItem("auth", JSON.stringify(3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675))
+          // console.log(typeof window.localStorage.getItem("auth"))
+          // console.log(JSON.parse(window.localStorage.getItem("auth")))
+          // console.log(JSON.parse(window.localStorage.getItem("auth")) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675)
         }
         else {
-          window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
+          // window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
         }
       })
     }
@@ -108,7 +108,7 @@ function WhiteNavbar() {
               <Button
                 className="btn-neutral ml-auto"
                 color="link"
-                onClick={ e => { window.localStorage.removeItem("auth"); window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', "_self") } }
+                onClick={ e => { window.sessionStorage.removeItem("auth"); window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', "_self") } }
               >
                 Back to Main Site
               </Button>
