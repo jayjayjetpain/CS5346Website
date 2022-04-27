@@ -8,6 +8,7 @@ const app = express(),
       port = 8000;
 
 let apartments, users;
+let auth = false;
 async function main(){
   app.use(bodyParser.json());
   app.use(cors());
@@ -43,18 +44,19 @@ async function main(){
       apartments.updateOne({id: parseInt(req.params.id)}, {$set: {name: req.body.name, address: req.body.address, units: req.body.units, price: req.body.price, sqft: req.body.sqft, url: req.body.url, listings: req.body.listings, desc: req.body.desc}})
   })
 
-  app.get('/dev/search', (req,res) => {
-    console.log("GOT HER")
-    apartments.find({}).toArray((err, result) => {res.status(200).send(result)})
+  app.get('/dev', (req,res) => {
+    console.log(auth)
+    if(auth) {
+      auth = false;
+      res.end(JSON.stringify(true));
+    }
+    else {
+      res.end(JSON.stringify(false));
+    }
+    // apartments.find({}).toArray((err, result) => {res.status(200).send(result)})
   });
 
-  app.get('/dev/apartment/:id', (req,res) => {
-    console.log("GOT HER2")
-    // let apartment
-    console.log(req.params.id)
-    apartments.findOne({id: parseInt(req.params.id)}, (err, result) => {res.status(200).json(result)})
-  });
-
+  //login check
   app.post('/login', (req, res) => {
     users.findOne({email: req.body.email}, (err, result) => {
       if(result) {
@@ -66,6 +68,7 @@ async function main(){
               res.end(JSON.stringify(false)); //if password doesn't match return empty array
           } else {
               console.log("Password matches!")
+              auth = true;
               res.end(JSON.stringify(true)); //if password matches return userID
           }
         })

@@ -1,9 +1,9 @@
-name: Build Backend API Service
+name: Build Frontend Dev Service
 
 on:
   push:
     paths:
-    - 'backend/**'
+    - 'frontend-dev/**'
   
 
 jobs:
@@ -30,8 +30,9 @@ jobs:
       
     - name: 'Submit to cloud build'
       run: |
-        cd backend
-        gcloud builds submit --tag us.gcr.io/cs-5346-apartmentwebsite/backend-api
+        cd frontend-dev
+        gcloud builds submit --tag us.gcr.io/cs-5346-apartmentwebsite/frontend-dev
         
     - name: 'Deploy to Cloud Run'
-      run: gcloud run deploy backend-api --image=us.gcr.io/cs-5346-apartmentwebsite/backend-api:latest --region=us-central1 --min-instances=1 --allow-unauthenticated --port=8000
+      run: gcloud run deploy frontend-dev --image=us.gcr.io/cs-5346-apartmentwebsite/frontend-dev:latest --region=us-central1 --min-instances=1 --allow-unauthenticated --port=3001 --memory=1Gi
+
