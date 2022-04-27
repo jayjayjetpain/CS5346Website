@@ -27,8 +27,6 @@ async function main(){
     client.close()
   }
 
-  console.log("this is a actions test")
-
   app.get('/search', (req,res) => {
     console.log("GOT HER")
     apartments.find({}).toArray((err, result) => {res.status(200).send(result)})

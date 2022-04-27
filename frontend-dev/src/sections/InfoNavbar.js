@@ -32,7 +32,7 @@ function WhiteNavbar() {
         if(response.data === true) {
           window.sessionStorage.setItem("auth", JSON.stringify(3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675))
           // console.log(typeof window.localStorage.getItem("auth"))
-          // console.log(JSON.parse(window.localStorage.getItem("auth")))
+          console.log(JSON.parse(window.localStorage.getItem("auth")))
           // console.log(JSON.parse(window.localStorage.getItem("auth")) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675)
         }
         else {
