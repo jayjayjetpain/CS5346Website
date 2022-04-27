@@ -114,7 +114,7 @@ benefit from learning about one another’s project, and I want your project to 
                       </a>
                     </div>
                     <p className="card-description text-center">
-                      Computer Science B.S. w/ Software Engineering <br />
+                      Computer Science B.S. w/ Software Engineering Concentration <br />
                       Skills: Full Stack Development, C++, Angular, JavaScript, React, SQL, Java, Git, Python
                     </p>
                   </CardBody>
