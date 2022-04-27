@@ -51,6 +51,7 @@ function LoginPage(props) {
       }
       else {
         setAlertSuccess(true)
+        console.log("Login Failed")
       }
     })
   }
