@@ -26,7 +26,14 @@ function WhiteNavbar() {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
-    let compare = 0;
+    let compare;
+    if(window.sessionStorage.getItem("auth")) {
+      compare = JSON.parse(window.sessionStorage.getItem("auth"))
+    }
+    else {
+      compare = 0;
+    }
+    
     if(JSON.parse(window.sessionStorage.getItem("auth")) !== compare) {
       axios.get('https://backend-api-pdococvs7a-uc.a.run.app/dev')
       .then(response => {
