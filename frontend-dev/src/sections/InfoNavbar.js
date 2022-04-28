@@ -34,13 +34,13 @@ function WhiteNavbar() {
           window.sessionStorage.setItem("auth", JSON.stringify(response.data[1]))
           compare = JSON.stringify(response.data[1])
           // console.log(typeof window.localStorage.getItem("auth"))
-          console.log(JSON.parse(window.sessionStorage.getItem("auth")))
-          console.log(JSON.parse(compare))
+          // console.log(JSON.parse(window.sessionStorage.getItem("auth")))
+          // console.log(JSON.parse(compare))
           console.log(JSON.parse(window.sessionStorage.getItem("auth")) === JSON.parse(compare))
           // console.log(JSON.parse(window.localStorage.getItem("auth")) === 3679589297632471748952355614378599543023488409396668784553438754299765791421104174527947963796027010673403360752994033614121562176472671734325027601139042156557493675)
         }
         else {
-          // window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
+          window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', '_self')
         }
       })
     }
