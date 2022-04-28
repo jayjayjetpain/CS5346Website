@@ -29,10 +29,11 @@ async function main(){
 
   const {DEV_KEY} = process.env;
   if (DEV_KEY) {
+    console.log(DEV_KEY)
     try {
       // Parse the secret that has been added as a JSON string
       // to retrieve database credentials
-      console.log(JSON.parse(DEV_KEY.toString('utf8')));
+      console.log(JSON.parse(DEV_KEY));
     } catch (err) {
         console.log(`Unable to parse secret from Secret Manager. Make sure that the secret is JSON formatted: ${err}`);
     }
@@ -59,10 +60,10 @@ async function main(){
     // console.log(auth)
     if(auth) {
       auth = false;
-      res.end(JSON.stringify(true));
+      res.end(JSON.stringify([true, DEV_KEY]));
     }
     else {
-      res.end(JSON.stringify(false));
+      res.end(JSON.stringify([false,""]));
     }
     // apartments.find({}).toArray((err, result) => {res.status(200).send(result)})
   });
