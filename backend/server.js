@@ -4,11 +4,12 @@ const cors = require('cors')
 const bcrypt = require('bcryptjs');
 const {MongoClient, ServerApiVersion} = require('mongodb');
 const app = express(),
-      bodyParser = require("body-parser");
-      port = 8000;
+bodyParser = require("body-parser");
+port = 8000;
 
 let apartments, users;
 let auth = false;
+const {DEV_KEY} = process.env;
 async function main(){
   app.use(bodyParser.json());
   app.use(cors());
@@ -25,18 +26,6 @@ async function main(){
     console.log(e)
   } finally {
     client.close()
-  }
-
-  const {DEV_KEY} = process.env;
-  if (DEV_KEY) {
-    console.log(DEV_KEY)
-    try {
-      // Parse the secret that has been added as a JSON string
-      // to retrieve database credentials
-      console.log(JSON.parse(DEV_KEY));
-    } catch (err) {
-        console.log(`Unable to parse secret from Secret Manager. Make sure that the secret is JSON formatted: ${err}`);
-    }
   }
 
   app.get('/search', (req,res) => {
