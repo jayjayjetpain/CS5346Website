@@ -27,6 +27,17 @@ async function main(){
     client.close()
   }
 
+  const {DEV_KEY} = process.env;
+  if (DEV_KEY) {
+    try {
+      // Parse the secret that has been added as a JSON string
+      // to retrieve database credentials
+      console.log(JSON.parse(DEV_KEY.toString('utf8')));
+    } catch (err) {
+        console.log(`Unable to parse secret from Secret Manager. Make sure that the secret is JSON formatted: ${err}`);
+    }
+  }
+
   app.get('/search', (req,res) => {
     console.log("GOT HER")
     apartments.find({}).toArray((err, result) => {res.status(200).send(result)})
