@@ -79,25 +79,18 @@ function WhiteNavbar() {
           </div>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
-            {/* {!auth ? */}
-              <Button
-                className="btn-neutral ml-auto"
-                color="link"
-                to="/login"
-                tag={Link}
-              >
-                Login
-              </Button>
-              {/* : 
-              <Button
-                className="btn-neutral ml-auto"
-                color="link"
-                onClick={ e => { window.sessionStorage.setItem("auth", JSON.stringify(false)); setAuth(false); } }
-              >
-                Logout
-              </Button>
-            } */}
+              <NavItem>
+                <Button
+                  className="btn-round ml-auto"
+                  color="info"
+                  to="/login"
+                  tag={Link}
+                >
+                  Login
+                </Button>
+              </NavItem>
             <UncontrolledDropdown nav inNavbar>
+              
                 <DropdownToggle color="default" caret nav>
                   More Info
                 </DropdownToggle>
