@@ -33,7 +33,7 @@ function WhiteNavbar() {
     else {
       compare = 0;
     }
-    
+
     if(JSON.parse(window.sessionStorage.getItem("auth")) !== compare) {
       axios.get('https://backend-api-pdococvs7a-uc.a.run.app/dev')
       .then(response => {
@@ -63,7 +63,7 @@ function WhiteNavbar() {
     //   {"name": "Arrive5 on University", "units": [1,2], "address": "5750 E University Blvd, Dallas, TX 75206", "price": [1640, 2425], "sqft": [508, 3175], "history": [2000, 2100, 2300, 2300, 2400, 2700, 2600, 2300, 2000, 2100, 1900, 2100], "predict": [2100, 2100, 2000, 1900, 1900, 1800], "trend": true, "url": "https://www.arriveonuniversity.com/", "listings": "https://www.arriveonuniversity.com/dallas-tx-apartments/arrive-on-university/conventional/", "desc": "At Arrive on University, you'll experience the excitement of big-city life in the heart of the sprawling Dallas metroplex. Whether you commute, study, travel, or enjoy the occasional weekend excursion, our easy access to I-30 and the 75 opens every avenue to elevated living. Our pet-friendly community provides spacious one and two-bedroom floor plans featuring some of the largest living spaces in Dallas."}
     // ]))
     headroom.init();
-  });
+  }, []);
 
   
   // const [auth, setAuth] = React.useState(JSON.parse(window.sessionStorage.getItem("auth")))
