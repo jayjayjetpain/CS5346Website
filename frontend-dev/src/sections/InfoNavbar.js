@@ -95,23 +95,16 @@ function WhiteNavbar() {
           </div>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
-            {/* {!auth ?
-              <Button
-                className="btn-neutral ml-auto"
-                color="link"
-                to="/login"
-                tag={Link}
-              >
-                Login
-              </Button>
-              :  */}
-              <Button
-                className="btn-neutral ml-auto"
-                color="link"
+            <NavItem>
+                <Button
+                className="btn-round ml-auto"
+                color="info"
                 onClick={ e => { window.sessionStorage.removeItem("auth"); window.open('https://frontend-app-pdococvs7a-uc.a.run.app/index', "_self") } }
               >
                 Back to Main Site
               </Button>
+              </NavItem>
+              
             <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle color="default" caret nav>
                   More Info
