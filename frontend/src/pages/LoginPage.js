@@ -80,7 +80,7 @@ function LoginPage(props) {
               >
                 <i className="nc-icon nc-simple-remove" />
               </button>
-              <span>The Username Password Combination is Incorrect.</span>
+              <span>The Email/Password Combination is Incorrect.</span>
             </Container>
           </Alert>
           <div className="filter" />
