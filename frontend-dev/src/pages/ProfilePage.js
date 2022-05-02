@@ -264,7 +264,7 @@ function ProfilePage() {
                     color="danger"
                     outline
                     type="reset"
-                    onClick={e => history.push(`/apartment/${window.location.pathname.split("/")[2]}`)}
+                    onClick={e => window.open(`https://frontend-app-pdococvs7a-uc.a.run.app/apartment/${window.location.pathname.split("/")[2]}`, "_self")}
                   >
                     View on Main Website
                   </Button>
